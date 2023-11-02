@@ -1,0 +1,31 @@
+From eb7c8414a5a5141236e2eaa92bfd37f3e7887de2 Mon Sep 17 00:00:00 2001
+From: Ondrej Jirman <megi@xff.cz>
+Date: Tue, 31 Oct 2023 20:43:07 +0100
+Subject: [PATCH] mfd: rk8xx-core: Fix interrupt processing order for power key
+ button
+
+Process rise event last, to avoid stuck keys when multiple interrupts
+are coalesced.
+
+Signed-off-by: Ondrej Jirman <megi@xff.cz>
+---
+ drivers/mfd/rk8xx-core.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/mfd/rk8xx-core.c b/drivers/mfd/rk8xx-core.c
+index c47164a3ec1d..a90bb4655950 100644
+--- a/drivers/mfd/rk8xx-core.c
++++ b/drivers/mfd/rk8xx-core.c
+@@ -43,8 +43,8 @@ static struct resource rk806_pwrkey_resources[] = {
+ };
+ 
+ static const struct resource rk817_pwrkey_resources[] = {
+-	DEFINE_RES_IRQ(RK817_IRQ_PWRON_RISE),
+ 	DEFINE_RES_IRQ(RK817_IRQ_PWRON_FALL),
++	DEFINE_RES_IRQ(RK817_IRQ_PWRON_RISE),
+ };
+ 
+ static const struct resource rk817_charger_resources[] = {
+-- 
+2.42.0
+
