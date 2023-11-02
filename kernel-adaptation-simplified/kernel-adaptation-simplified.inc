@@ -97,7 +97,7 @@ defconfig_name=$(basename %{defconfig})
 sh patches/apply-patches.sh %{source_directory}
 %endif
 
-#make -C %{source_directory} clean
+make -C %{source_directory} clean
 make -C %{source_directory} defconfig KBUILD_DEFCONFIG=$defconfig_name
 
 %if %{build_Image}
