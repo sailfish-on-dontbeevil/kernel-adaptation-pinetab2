@@ -24810,7 +24810,7 @@ index 000000000000..4a23cdf39740
 +
 +#if (GET_MAC_ADDR_METHOD == 2) /* To use macaddr and PS Mode of customers */
 +#ifndef PATH_WIFI_MACADDR
-+#define PATH_WIFI_MACADDR		"/persist/wifi/.mac.info"
++#define PATH_WIFI_MACADDR		"/persist/wifi/.macaddr"
 +#endif
 +#elif (GET_MAC_ADDR_METHOD == 3)
 +#define PATH_WIFI_MACADDR_TMP	"/data/.mac.info"
