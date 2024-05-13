@@ -7,6 +7,9 @@
 # Crossbuild toolchain to use
 %define crossbuild aarch64
 
+
+%define kcflags "KCFLAGS=-Wno-error=implicit-function-declaration"
+
 # RPM target architecture, remove to leave it unaffected
 # You should have a good reason to change the target architecture
 # (like building on aarch64 targeting an armv7hl repository)

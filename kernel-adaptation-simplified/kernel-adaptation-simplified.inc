@@ -98,26 +98,26 @@ sh patches/apply-patches.sh %{source_directory}
 %endif
 
 make -C %{source_directory} clean
-make -C %{source_directory} defconfig KBUILD_DEFCONFIG=$defconfig_name
+make -C %{source_directory} %{kcflags} defconfig KBUILD_DEFCONFIG=$defconfig_name
 
 %if %{build_Image}
-make -C %{source_directory} -j$(nproc) Image
+make -C %{source_directory} -j$(nproc) %{kcflags} Image
 %endif
 
 %if %{build_uImage}
-make -C %{source_directory} -j$(nproc) uImage
+make -C %{source_directory} -j$(nproc) %{kcflags} uImage
 %endif
 
 %if %{build_zImage}
-make -C %{source_directory} -j$(nproc) zImage
+make -C %{source_directory} -j$(nproc) %{kcflags} zImage
 %endif
 
 %if %{build_modules}
-make -C %{source_directory} -j$(nproc) modules
+make -C %{source_directory} -j$(nproc) %{kcflags} modules
 %endif
 
 %if 0%{?devicetrees:1}
-make -C %{source_directory} -j$(nproc) dtbs
+make -C %{source_directory} -j$(nproc) %{kcflags} dtbs
 %endif
 
 %install
