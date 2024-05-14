@@ -8,7 +8,7 @@
 %define crossbuild aarch64
 
 
-%define kcflags "KCFLAGS=-Wno-error=implicit-function-declaration"
+%define kcflags "KCFLAGS=-Wno-error=implicit-function-declaration -Wno-error=missing-prototypes"
 
 # RPM target architecture, remove to leave it unaffected
 # You should have a good reason to change the target architecture
