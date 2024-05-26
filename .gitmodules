@@ -1,4 +1,4 @@
 [submodule "linux"]
 	path = linux
-	url = https://github.com/sailfish-on-dontbeevil/kernel-megi
+	url = https://gitlab.com/ook37/linux
 
