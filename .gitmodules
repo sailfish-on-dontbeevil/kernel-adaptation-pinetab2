@@ -1,4 +1,4 @@
 [submodule "linux"]
 	path = linux
-	url = https://gitlab.com/ook37/linux
+	url = https://github.com/dreemurrs-embedded/linux-pinetab2
 
