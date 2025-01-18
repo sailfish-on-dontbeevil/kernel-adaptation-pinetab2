@@ -61,6 +61,7 @@ BuildRequires:  bison
 BuildRequires:  bc
 BuildRequires:  gmp-devel
 BuildRequires:  mpc-devel
+BuildRequires:  openssl
 %if 0%{?crossbuild:1}
 BuildRequires:  cross-%{crossbuild}-gcc
 BuildRequires:  cross-%{crossbuild}-binutils
