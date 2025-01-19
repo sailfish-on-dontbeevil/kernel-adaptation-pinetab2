@@ -16,7 +16,7 @@
 %define device_target_cpu aarch64
 
 # Defconfig to pick-up
-%define defconfig pinetab2_config-danct-sfos
+%define defconfig pinetab2_defconfig_sfos
 
 # Linux kernel source directory
 %define source_directory linux/
