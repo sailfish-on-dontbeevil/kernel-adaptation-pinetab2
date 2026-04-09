@@ -45,14 +45,12 @@ Name:           kernel-adaptation-%{rpm_device}
 Summary:        Kernel adaptation for %{rpm_device}
 Group:          System
 License:        GPLv2
-Version:        2.6
 Release:        1
 Provides:       kernel
 Source:         %{name}-%{version}.tar.bz2
 Requires(pre):  kmod >= 9
 BuildRequires:  pkgconfig(ncurses)
 BuildRequires:  pkgconfig(openssl)
-BuildRequires:  mer-kernel-checks
 #BuildRequires:  kmod >= 9
 #BuildRequires:  perl
 #BuildRequires:  fdupes
@@ -60,7 +58,6 @@ BuildRequires:  flex
 BuildRequires:  bison
 BuildRequires:  bc
 BuildRequires:  gmp-devel
-BuildRequires:  mpc-devel
 BuildRequires:  openssl
 %if 0%{?crossbuild:1}
 BuildRequires:  cross-%{crossbuild}-gcc
@@ -85,9 +82,15 @@ mkdir -p %{_tmpdir}
 
 export ARCH=%{kernel_arch}
 export LOCALVERSION="-%{device}"
+export HOSTLDFLAGS=%{hostldflags}
+export INSTALL_MOD_PATH=/lib/
 
 %if 0%{?crossbuild:1}
-export CROSS_COMPILE=%{crossbuild}-meego-linux-gnu-
+export ARCH=%{kernel_arch}
+export CLANG_TRIPLE=%{clangtriple}
+export CROSS_COMPILE=%{crosscompile}
+export CROSS_COMPILE32=%{crosscompile32}
+
 # FIXME? Shouldn't be needed
 export PATH=/opt/cross/bin/:$PATH
 %endif
