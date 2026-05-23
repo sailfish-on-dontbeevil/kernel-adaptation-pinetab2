@@ -45,7 +45,6 @@ Name:           kernel-adaptation-%{rpm_device}
 Summary:        Kernel adaptation for %{rpm_device}
 Group:          System
 License:        GPLv2
-Release:        1
 Provides:       kernel
 Source:         %{name}-%{version}.tar.bz2
 Requires(pre):  kmod >= 9
@@ -60,9 +59,8 @@ BuildRequires:  bc
 BuildRequires:  gmp-devel
 BuildRequires:  openssl
 %if 0%{?crossbuild:1}
-BuildRequires:  cross-%{crossbuild}-gcc
-BuildRequires:  cross-%{crossbuild}-binutils
-BuildRequires:  cross-%{crossbuild}-as
+BuildRequires:  cross-%{device_target_cpu}-gcc16
+BuildRequires:  cross-%{device_target_cpu}-binutils
 %endif
 Provides:       droid-hal
 Provides:       droid-hal-kernel
@@ -103,7 +101,7 @@ defconfig_name=$(basename %{defconfig})
 sh patches/apply-patches.sh %{source_directory}
 %endif
 
-make -C %{source_directory} clean
+#make -C %{source_directory} clean
 make -C %{source_directory} %{kcflags} defconfig KBUILD_DEFCONFIG=$defconfig_name
 
 %if %{build_Image}
